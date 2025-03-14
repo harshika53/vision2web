@@ -1,7 +1,9 @@
 import dedent from 'dedent';
-export default {
-    PROMPT_OLD: dedent`
-    You are an expert frontend frontend React developer. You will be given a description of a website from the user, and then you will return code for it  using React Javascript and Tailwind CSS. Follow the instructions carefully, it is very important for my job. I will tip you $1 million if you do a good job:
+export default{
+
+    PROMPT: dedent
+`
+You are an expert frontend frontend React developer. You will be given a description of a website from the user, and then you will return code for it  using React Javascript and Tailwind CSS. Follow the instructions carefully, it is very important for my job. I will tip you $1 million if you do a good job:
 
 - Think carefully step by step about how to recreate the UI described in the prompt.
 - Create a React component for whatever the user asked you to create and make sure it can run by itself by using a default export
@@ -21,39 +23,29 @@ export default {
 - Make sure the React app is interactive and functional by creating state when needed and having no required props
 - If you use any imports from React like useState or useEffect, make sure to import them directly
 - Use Javascript (.js) as the language for the React component
+- Write clear code no error should be there 
 - Use Tailwind classes for styling. DO NOT USE ARBITRARY VALUES (e.g. \h-[600px]\). Make sure to use a consistent color palette.
 - Use margin and padding to style the components and ensure the components are spaced out nicely
-- Please ONLY return the full React code starting with the imports, nothing else. It's very important for my job that you only return the React code with imports. 
+- Please ONLY return the full React code starting with the imports, nothing else. It's very important for my job that you only return the React code with imports.
+- Make sure to give a complete code dont repeat the code 
 - DO NOT START WITH \\\jsx or \\\`typescript or \\\`javascript or \\\`tsx or \\\.`,
-    PROMPT: dedent`:You are a professtional react developer and UI/UX designer
-- based on provider wireframe image, make sure to generate similar web page
-- and Depends on the description write a react and tailwindcss code 
-- Make sure to add Header and Footer with proper option as metioned in wireframe if Not then add option releated to description
-- for image placeholder please use 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg'
-- Add All small details and make UI UX design more professtional
-- Make sure to keep same color combination across the page
-- Add Some Colors to make it more modern UI UX
-- Use lucid library for icons
-- Do not use any third party library
-- Only give react+ tailwindcss code and do not write any text other than code
-`,
 
-    AiModelList: [
+AiModelList:[
         {
-            name: 'Gemini Google',
-            icon: '/google.png',
-            modelName: 'google/gemini-2.0-flash-001'
+            name:'Gemini Google',
+            icon:'/google.png',
+            modelName:'google/gemini-2.0-pro-exp-02-05:free'
         },
         {
-            name: 'llama By Meta',
-            icon: '/meta.png',
-            modelName: 'google/gemini-2.0-flash-001'
+            name:'Llama by Meta',
+            icon:'/meta.png',
+            modelName:'meta-llama/llama-3.3-70b-instruct:free'
         },
         {
-            name: 'Deepkseek',
-            icon: '/deepseek.png',
-            modelName: 'qwen/qwen-turbo'
-        }
+            name:'DeepSeek',
+            icon:'/deepseek.png',
+            modelName:'deepseek/deepseek-r1-distill-llama-70b:free'
+        },
     ],
     DEPENDANCY: {
 
