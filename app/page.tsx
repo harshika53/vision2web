@@ -13,36 +13,63 @@ export default function Home() {
   const user = useAuthContext();
   console.log(user?.user)
   return (
-    <div>
-      <header className="flex  flex-wrap sm:justify-start  sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-neutral-800 dark:border-neutral-700">
+    <div className="min-h-screen bg-[url('/herobg.png')] bg-cover bg-center bg-no-repeat">
+      <header className="fixed top-0 left-0 z-50 w-full bg-transparent backdrop-blur-md border-b border-white/20 text-sm py-3 sm:py-3">
         <nav
-          className="relative  p- max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
+          className="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
           aria-label="Global"
         >
           <div className="flex items-center justify-between">
-            {/* <a className="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">Brand</a> */}
-            <div>
-              {/* <button type="button" className="hs-collapse-toggle size-9 flex justify-center items-center text-sm font-semibold rounded-lg border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation"> */}
-              <div className="flex items-center gap-2">
-                <Image
-                  src={"/logo_h.png"}
-                  alt="logo"
-                  width={290}
-                  height={110}
-                  className="w-[60px] h-[40px]"
-                />
-                <h2 className="font-bold text-lg whitespace-nowrap">Vision To Web</h2>
-              </div>
+            {/* Logo and Brand Name */}
+            <div className="flex items-center gap-2 whitespace-nowrap cursor-pointer"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+              <Image
+                src="/logo_h.png"
+                alt="logo"
+                width={290}
+                height={110}
+                className="w-[60px] h-[40px]"
+              />
+              <h2 className="font-bold text-lg text-white">Vision To Web</h2>
             </div>
           </div>
+
+          {/* Navigation Links */}
           <div
             id="navbar-collapse-with-animation"
             className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end sm:ps-7">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end sm:ps-7 gap-6">
+              {/* Navigation Items */}
+              <a
+                href="#"
+                className="text-white font-medium hover:text-violet-500 transition-all"
+              >
+                HOME
+              </a>
+              <a
+                href="#"
+                className="text-white font-medium hover:text-violet-500 transition-all"
+              >
+                ABOUT
+              </a>
+              <a
+                href="#"
+                className="text-white font-medium hover:text-violet-500 transition-all"
+              >
+                SERVICE
+              </a>
+              <a
+                href="#"
+                className="text-white font-medium hover:text-violet-500 transition-all"
+              >
+                CONTACT
+              </a>
+
+              {/* Authentication / Profile */}
               {!user?.user?.email ? (
                 <Authentication>
-                  <div className="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 sm:border-s sm:border-gray-300 py-2 sm:py-0 sm:ms-4 sm:my-6 sm:ps-6 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-blue-500">
+                  <div className="flex items-center gap-x-2 font-medium text-white hover:text-gray-300 sm:border-l sm:border-white/30 py-2 sm:py-0 sm:ml-4 sm:pl-6 cursor-pointer">
                     <svg
                       className="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
@@ -63,6 +90,7 @@ export default function Home() {
           </div>
         </nav>
       </header>
+
       <div className="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/polygon-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/polygon-bg-element.svg')] before:bg-no-repeat before:bg-top before:bg-cover before:size-full before:-z-[1] before:transform before:-translate-x-1/2">
         <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
           {/* <div className="flex justify-center">
@@ -76,9 +104,9 @@ export default function Home() {
           </div> */}
 
           <div className="mt-5 max-w-2xl text-center mx-auto">
-            <h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
+            <h1 className="block font-bold text-white text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
               Design it. Build it
-              <span className="bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent">
+              <span className="bg-clip-text bg-gradient-to-tl from-violet-900 to-violet-500 text-transparent">
                 {" "}
                 Instantly
               </span>
@@ -86,7 +114,7 @@ export default function Home() {
           </div>
 
           <div className="mt-5 max-w-3xl text-center mx-auto">
-            <p className="text-lg text-gray-600 dark:text-neutral-400">
+            <p className="text-lg text-gray-400 dark:text-neutral-400">
               Revolutionize your content creation with our AI-powered app,
               delivering engaging and high-quality codes in seconds.
             </p>
@@ -161,10 +189,11 @@ export default function Home() {
             </div>
             <div className="mt-5">
               <h3 className="group-hover:text-gray-600 text-lg font-semibold text-gray-800 dark:text-white dark:group-hover:text-gray-400">
-              Effortless Conversion
+                Effortless Conversion
               </h3>
               <p className="mt-1 text-gray-600 dark:text-neutral-400">
-              Instantly turn wireframes into clean, structured code with minimal effort.
+                Instantly turn wireframes into clean, structured code with
+                minimal effort.
               </p>
             </div>
           </a>
@@ -197,7 +226,8 @@ export default function Home() {
                 Customizable
               </h3>
               <p className="mt-1 text-gray-600 dark:text-neutral-400">
-              Easily adapt and extend components to match your project’s unique design and functionality.
+                Easily adapt and extend components to match your project’s
+                unique design and functionality.
               </p>
             </div>
           </a>
@@ -228,7 +258,8 @@ export default function Home() {
                 Free to Use
               </h3>
               <p className="mt-1 text-gray-600 dark:text-neutral-400">
-              Access a powerful wireframe-to-code conversion tool with well-documented resources at no cost.
+                Access a powerful wireframe-to-code conversion tool with
+                well-documented resources at no cost.
               </p>
             </div>
           </a>
@@ -256,10 +287,11 @@ export default function Home() {
             </div>
             <div className="mt-5">
               <h3 className="group-hover:text-gray-600 text-lg font-semibold text-gray-800 dark:text-white dark:group-hover:text-gray-400">
-              Accurate Code Generation
+                Accurate Code Generation
               </h3>
               <p className="mt-1 text-gray-600 dark:text-neutral-400">
-              Get high-quality, production-ready code that aligns with your design specifications.
+                Get high-quality, production-ready code that aligns with your
+                design specifications.
               </p>
             </div>
           </a>
