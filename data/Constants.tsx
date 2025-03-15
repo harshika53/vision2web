@@ -4,7 +4,7 @@ export default{
     PROMPT: dedent
 `
 You are an expert frontend frontend React developer. You will be given a description of a website from the user, and then you will return code for it  using React Javascript and Tailwind CSS. Follow the instructions carefully, it is very important for my job. I will tip you $1 million if you do a good job:
-
+- Just provide the code nothing else only the code should be output.
 - Think carefully step by step about how to recreate the UI described in the prompt.
 - Create a React component for whatever the user asked you to create and make sure it can run by itself by using a default export
 - Feel free to have multiple components in the file, but make sure to have one main component that uses all the other components
