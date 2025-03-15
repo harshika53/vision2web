@@ -4,7 +4,7 @@ export default{
     PROMPT: dedent
 `
 You are an expert frontend frontend React developer. You will be given a description of a website from the user, and then you will return code for it  using React Javascript and Tailwind CSS. Follow the instructions carefully, it is very important for my job. I will tip you $1 million if you do a good job:
-- Just provide the code nothing else only the code should be output.
+- Just provide the code nothing else only the code should be output when prompt is being given only give the code nothing else .
 - Think carefully step by step about how to recreate the UI described in the prompt.
 - Create a React component for whatever the user asked you to create and make sure it can run by itself by using a default export
 - Feel free to have multiple components in the file, but make sure to have one main component that uses all the other components
@@ -37,15 +37,25 @@ AiModelList:[
             modelName:'google/gemini-2.0-pro-exp-02-05:free'
         },
         {
-            name:'Llama by Meta',
-            icon:'/meta.png',
-            modelName:'meta-llama/llama-3.3-70b-instruct:free'
-        },
-        {
-            name:'DeepSeek',
-            icon:'/deepseek.png',
-            modelName:'deepseek/deepseek-r1-distill-llama-70b:free'
-        },
+          name:'Gemma',
+          icon:'/gemma.webp',
+          modelName:'google/gemma-3-12b-it:free'
+      },
+      {
+        name:'Qwen',
+        icon:'/qwen.png',
+        modelName:'qwen/qwen2.5-vl-72b-instruct:free'
+    },
+    {
+      name:'Llama by Meta',
+      icon:'/meta.png',
+      modelName:'meta-llama/llama-3.3-70b-instruct:free'
+  },
+      {
+        name:'DeepSeek',
+        icon:'/deepseek.png',
+        modelName:'deepseek/deepseek-r1-distill-llama-70b:free'
+    },
     ],
     DEPENDANCY: {
 

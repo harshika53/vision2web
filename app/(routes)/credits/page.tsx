@@ -28,7 +28,7 @@ function Credits() {
                     <h2 className='font-bold text-xl'>My Credits:</h2>
                     {userData?.credits && <p className='text-lg text-gray-500'>{userData?.credits} Credits left</p>}
                 </div>
-                <Button>Buy More Credits</Button>
+                {/* <Button>Buy More Credits</Button> */}
             </div>
         </div>
     )
