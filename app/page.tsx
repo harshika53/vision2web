@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { auth } from "@/configs/firebaseConfig";
 import ProfileAvatar from "./_components/ProfileAvatar";
 import { useAuthContext } from "./provider";
+import MagicButton from "./MagicButton";
 
 export default function Home() {
   // const user = auth?.currentUser;
@@ -13,7 +14,7 @@ export default function Home() {
   const user = useAuthContext();
   console.log(user?.user)
   return (
-    <div className="min-h-screen bg-[url('/herobg.png')] bg-cover bg-center bg-no-repeat">
+    <div className="min-h-screen bg-[#050816] bg-[url('/herobg.png')] bg-contain bg-top bg-no-repeat">
       <header className="fixed top-0 left-0 z-50 w-full bg-transparent backdrop-blur-md border-b border-white/20 text-sm py-3 sm:py-3">
         <nav
           className="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
@@ -58,12 +59,12 @@ export default function Home() {
               >
                 ABOUT
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="text-white font-medium hover:text-violet-500 transition-all"
               >
                 SERVICE
-              </a>
+              </a> */}
               <a
                 href="#"
                 className="text-white font-medium hover:text-violet-500 transition-all"
@@ -74,7 +75,7 @@ export default function Home() {
               {/* Authentication / Profile */}
               {!user?.user?.email ? (
                 <Authentication>
-                  <div className="flex items-center gap-x-2 font-medium text-white hover:text-gray-300 sm:border-l sm:border-white/30 py-2 sm:py-0 sm:ml-4 sm:pl-6 cursor-pointer">
+                  <div className="flex items-center gap-x-2  text-white font-medium hover:text-violet-500 transition-all sm:border-l sm:border-white/30 py-2 sm:py-0 sm:ml-4 sm:pl-6 cursor-pointer ">
                     <svg
                       className="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
@@ -127,13 +128,12 @@ export default function Home() {
 
           <div className="mt-8 gap-3 flex justify-center">
             {user?.user?.email ? (
-              <a
-                className="inline-flex justify-center items-center 
-      gap-x-3 text-center bg-gradient-to-tl from-blue-600
-       to-violet-600 hover:from-violet-600 hover:to-blue-600 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-1 focus:ring-gray-600 py-3 px-4 dark:focus:ring-offset-gray-800"
-                href="/dashboard"
-              >
-                Get started
+              <a href="/dashboard">
+                <MagicButton
+                  title="Get Started"
+                  position="right"
+                  icon={undefined}
+                />
                 <svg
                   className="flex-shrink-0 size-4"
                   xmlns="http://www.w3.org/2000/svg"
@@ -158,25 +158,27 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
-        <Image
-          src={"/w_t_c.png"}
-          alt="image"
+      <div className="flex justify-center py-10">
+        <video
+          src="/landingvid.mp4"
+          autoPlay
+          loop
+          muted
           width={800}
-          height={900}
-          className="w-full h-[300px] object-contain"
+          height={450}
+          className="w-full max-w-[800px] h-auto mt-[-30px] object-contain rounded-lg shadow-lg"
         />
       </div>
 
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-2">
-        <a
+          <a
             className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200 
              bg-transparent backdrop-blur-0 border border-transparent 
-             hover:backdrop-blur-xl hover:border-purple-800/50">
+             hover:backdrop-blur-xl hover:border-purple-800/80"
+          >
             <div className="flex justify-center items-center size-12 bg-purple-600 rounded-xl">
               <svg
-                className="flex-shrink-0 size-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -186,18 +188,21 @@ export default function Home() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                // class="lucide lucide-file-code-2"
               >
-                <rect width="10" height="14" x="3" y="8" rx="2" />
-                <path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4" />
-                <path d="M8 18h.01" />
+                <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4" />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                <path d="m5 12-3 3 3 3" />
+                <path d="m9 18 3-3-3-3" />
               </svg>
             </div>
             <div className="mt-5">
-            <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
+              <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
                 Effortless Conversion
               </h3>
               <p className="mt-1 group-hover:text-gray-300 text-gray-500 dark:text-neutral-400">
-                  Quickly transform wireframes into clean, structured, and production-ready code with minimal effort.
+                Quickly transform wireframes into clean, structured, and
+                production-ready code with minimal effort.
               </p>
             </div>
           </a>
@@ -205,11 +210,10 @@ export default function Home() {
           <a
             className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200 
              bg-transparent backdrop-blur-0 border border-transparent 
-             hover:backdrop-blur-xl hover:border-purple-800/50"
+             hover:backdrop-blur-xl hover:border-purple-800/80"
           >
             <div className="flex justify-center items-center size-12 bg-purple-600 rounded-xl">
               <svg
-                className="flex-shrink-0 size-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -219,15 +223,17 @@ export default function Home() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                className="lucide lucide-git-fork"
               >
-                <path d="M20 7h-9" />
-                <path d="M14 17H5" />
-                <circle cx="17" cy="17" r="3" />
-                <circle cx="7" cy="7" r="3" />
+                <circle cx="12" cy="18" r="3" />
+                <circle cx="6" cy="6" r="3" />
+                <circle cx="18" cy="6" r="3" />
+                <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9" />
+                <path d="M12 12v3" />
               </svg>
             </div>
             <div className="mt-5">
-            <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
+              <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
                 Customizable
               </h3>
               <p className="mt-1 group-hover:text-gray-300 text-gray-500 dark:text-neutral-400">
@@ -240,11 +246,10 @@ export default function Home() {
           <a
             className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200 
              bg-transparent backdrop-blur-0 border border-transparent 
-             hover:backdrop-blur-xl hover:border-purple-800/40"
+             hover:backdrop-blur-xl hover:border-purple-800/80"
           >
             <div className="flex justify-center items-center size-12 bg-purple-600 rounded-xl">
               <svg
-                className="flex-shrink-0 size-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -254,13 +259,15 @@ export default function Home() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                className="lucide lucide-book-open-check"
               >
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                <path d="M12 21V7" />
+                <path d="m16 12 2 2 4-4" />
+                <path d="M22 6V4a1 1 0 0 0-1-1h-5a4 4 0 0 0-4 4 4 4 0 0 0-4-4H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6a1 1 0 0 0 1-1v-1.3" />
               </svg>
             </div>
             <div className="mt-5">
-            <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
+              <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
                 Free to Use
               </h3>
               <p className="mt-1 group-hover:text-gray-300 text-gray-500 dark:text-neutral-400">
@@ -273,11 +280,10 @@ export default function Home() {
           <a
             className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200
              bg-transparent backdrop-blur-0 border border-transparent 
-             hover:backdrop-blur-xl hover:border-purple-800/50"
+             hover:backdrop-blur-xl hover:border-purple-800/80"
           >
             <div className="flex justify-center items-center size-12 bg-purple-600 rounded-xl">
               <svg
-                className="flex-shrink-0 size-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -287,8 +293,9 @@ export default function Home() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                className="lucide lucide-messages-square"
               >
-                <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" />
+                <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z" />
                 <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
               </svg>
             </div>
