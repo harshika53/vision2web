@@ -21,8 +21,10 @@ export default function Home() {
         >
           <div className="flex items-center justify-between">
             {/* Logo and Brand Name */}
-            <div className="flex items-center gap-2 whitespace-nowrap cursor-pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+            <div
+              className="flex items-center gap-2 whitespace-nowrap cursor-pointer"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
               <Image
                 src="/logo_h.png"
                 alt="logo"
@@ -43,10 +45,13 @@ export default function Home() {
               {/* Navigation Items */}
               <a
                 href="#"
-                className="text-white font-medium hover:text-violet-500 transition-all"
+                className=" text-white font-medium hover:text-violet-500 transition-all"
               >
+                {" "}
+                {/* font-medium text-white transition-all hover:bg-gradient-to-r hover:from-purple-900 hover:to-pink-400 hover:bg-clip-text hover:text-transparent*/}
                 HOME
               </a>
+
               <a
                 href="#"
                 className="text-white font-medium hover:text-violet-500 transition-all"
@@ -165,11 +170,11 @@ export default function Home() {
 
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-2">
-          <a
-            className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800"
-            href="#"
-          >
-            <div className="flex justify-center items-center size-12 bg-blue-600 rounded-xl">
+        <a
+            className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200 
+             bg-transparent backdrop-blur-0 border border-transparent 
+             hover:backdrop-blur-xl hover:border-purple-800/50">
+            <div className="flex justify-center items-center size-12 bg-purple-600 rounded-xl">
               <svg
                 className="flex-shrink-0 size-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
@@ -188,21 +193,21 @@ export default function Home() {
               </svg>
             </div>
             <div className="mt-5">
-              <h3 className="group-hover:text-gray-600 text-lg font-semibold text-gray-800 dark:text-white dark:group-hover:text-gray-400">
+            <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
                 Effortless Conversion
               </h3>
-              <p className="mt-1 text-gray-600 dark:text-neutral-400">
-                Instantly turn wireframes into clean, structured code with
-                minimal effort.
+              <p className="mt-1 group-hover:text-gray-300 text-gray-500 dark:text-neutral-400">
+                  Quickly transform wireframes into clean, structured, and production-ready code with minimal effort.
               </p>
             </div>
           </a>
 
           <a
-            className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800"
-            href="#"
+            className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200 
+             bg-transparent backdrop-blur-0 border border-transparent 
+             hover:backdrop-blur-xl hover:border-purple-800/50"
           >
-            <div className="flex justify-center items-center size-12 bg-blue-600 rounded-xl">
+            <div className="flex justify-center items-center size-12 bg-purple-600 rounded-xl">
               <svg
                 className="flex-shrink-0 size-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
@@ -222,21 +227,22 @@ export default function Home() {
               </svg>
             </div>
             <div className="mt-5">
-              <h3 className="group-hover:text-gray-600 text-lg font-semibold text-gray-800 dark:text-white dark:group-hover:text-gray-400">
+            <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
                 Customizable
               </h3>
-              <p className="mt-1 text-gray-600 dark:text-neutral-400">
-                Easily adapt and extend components to match your project’s
+              <p className="mt-1 group-hover:text-gray-300 text-gray-500 dark:text-neutral-400">
+                Easily adapt and extend components to match your project's
                 unique design and functionality.
               </p>
             </div>
           </a>
 
           <a
-            className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800"
-            href="#"
+            className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200 
+             bg-transparent backdrop-blur-0 border border-transparent 
+             hover:backdrop-blur-xl hover:border-purple-800/40"
           >
-            <div className="flex justify-center items-center size-12 bg-blue-600 rounded-xl">
+            <div className="flex justify-center items-center size-12 bg-purple-600 rounded-xl">
               <svg
                 className="flex-shrink-0 size-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
@@ -254,10 +260,10 @@ export default function Home() {
               </svg>
             </div>
             <div className="mt-5">
-              <h3 className="group-hover:text-gray-600 text-lg font-semibold text-gray-800 dark:text-white dark:group-hover:text-gray-400">
+            <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
                 Free to Use
               </h3>
-              <p className="mt-1 text-gray-600 dark:text-neutral-400">
+              <p className="mt-1 group-hover:text-gray-300 text-gray-500 dark:text-neutral-400">
                 Access a powerful wireframe-to-code conversion tool with
                 well-documented resources at no cost.
               </p>
@@ -265,10 +271,11 @@ export default function Home() {
           </a>
 
           <a
-            className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800"
-            href="#"
+            className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200
+             bg-transparent backdrop-blur-0 border border-transparent 
+             hover:backdrop-blur-xl hover:border-purple-800/50"
           >
-            <div className="flex justify-center items-center size-12 bg-blue-600 rounded-xl">
+            <div className="flex justify-center items-center size-12 bg-purple-600 rounded-xl">
               <svg
                 className="flex-shrink-0 size-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
@@ -286,10 +293,10 @@ export default function Home() {
               </svg>
             </div>
             <div className="mt-5">
-              <h3 className="group-hover:text-gray-600 text-lg font-semibold text-gray-800 dark:text-white dark:group-hover:text-gray-400">
+              <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
                 Accurate Code Generation
               </h3>
-              <p className="mt-1 text-gray-600 dark:text-neutral-400">
+              <p className="mt-1 group-hover:text-gray-300 text-gray-500 dark:text-neutral-400">
                 Get high-quality, production-ready code that aligns with your
                 design specifications.
               </p>
