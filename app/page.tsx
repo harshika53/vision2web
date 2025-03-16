@@ -151,7 +151,11 @@ export default function Home() {
               </a>
             ) : (
               <Authentication>
-                <Button>Get Started</Button>
+                <MagicButton
+                  title="Get Started"
+                  position="right"
+                  icon={undefined}
+                />
               </Authentication>
             )}
           </div>
