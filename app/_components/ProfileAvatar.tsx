@@ -26,17 +26,29 @@ function ProfileAvatar() {
         });
     }
     return (
-        <div>
-            <Popover >
-                <PopoverTrigger>
-                    {user?.user?.photoURL && <img src={user?.user?.photoURL} alt='profile' className='w-[35px] h-[35px] rounded-full' />}
-                </PopoverTrigger>
-                <PopoverContent className='w-[100px] mx-w-sm'>
-                    <Button variant={'ghost'} onClick={onButtonPress} className=''>Logout</Button>
-                </PopoverContent>
-            </Popover>
-        </div>
-    )
+      <div>
+        <Popover>
+          <PopoverTrigger>
+            {user?.user?.photoURL && (
+              <img
+                src={user?.user?.photoURL}
+                alt="profile"
+                className="w-[35px] h-[35px] rounded-full"
+              />
+            )}
+          </PopoverTrigger>
+          <PopoverContent className="w-[110px] bg-transparent border-none shadow-none p-0 mt-6">
+            <Button
+              variant="ghost"
+              onClick={onButtonPress}
+              className="w-[110px] h-[48px] px-3 py-1 bg-slate-950 rounded-md text-white border border-purple-800/80"
+            >
+              Logout
+            </Button>
+          </PopoverContent>
+        </Popover>
+      </div>
+    );
 }
 
 export default ProfileAvatar
