@@ -8,6 +8,7 @@ import ProfileAvatar from "./_components/ProfileAvatar";
 import { useAuthContext } from "./provider";
 import MagicButton from "./MagicButton";
 import Contact from "./Contact";
+import Footer from "./Footer";
 
 export default function Home() {
   // const user = auth?.currentUser;
@@ -188,11 +189,11 @@ export default function Home() {
           className="w-full max-w-[800px] h-auto mt-[-30px] object-contain rounded-lg shadow-lg"
         />
       </div>
-      <div className="mt-10 text-center">
+      {/* <div className="mt-10 text-center">
         <h2 className="text-4xl font-bold text-white">ABOUT</h2>
-      </div>
+      </div> */}
 
-      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto cursor-default">
+      <div id="features" className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto cursor-default">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-2">
           <a
             className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200 
@@ -218,7 +219,7 @@ export default function Home() {
                 <path d="m9 18 3-3-3-3" />
               </svg>
             </div>
-            <div id="features" className="mt-5">
+            <div  className="mt-5">
               <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
                 Effortless Conversion
               </h3>
@@ -335,6 +336,7 @@ export default function Home() {
       </div>
       <div id="features2">
       <Contact />
+      <Footer />
       </div>
     </div>
   );

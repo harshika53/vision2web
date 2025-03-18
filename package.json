@@ -33,6 +33,7 @@
     "openai": "^4.83.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-icons": "^5.5.0",
     "react-live": "^4.1.8",
     "sonner": "^1.7.4",
     "tailwind-merge": "^3.0.1",
