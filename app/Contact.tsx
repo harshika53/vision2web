@@ -99,7 +99,7 @@ const Contact = () => {
 
       {/* Right Side - Live Code Preview */}
       <div className="w-full max-w-[600px] mx-auto p-6 bg-[#0D081D] rounded-2xl">
-  <h2 className="text-white text-2xl font-bold">Live Code Preview</h2>
+  <h2 className="text-white text-2xl font-bold">Live Code Editor</h2>
 
   <LiveProvider code={code}>
     {/* Code Editor with Increased Default Height */}
