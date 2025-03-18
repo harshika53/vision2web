@@ -7,6 +7,7 @@ import { auth } from "@/configs/firebaseConfig";
 import ProfileAvatar from "./_components/ProfileAvatar";
 import { useAuthContext } from "./provider";
 import MagicButton from "./MagicButton";
+import Contact from "./Contact";
 
 export default function Home() {
   // const user = auth?.currentUser;
@@ -43,34 +44,48 @@ export default function Home() {
             className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
           >
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end sm:ps-7 gap-6">
+              
               {/* Navigation Items */}
+              
               <a
-                href="#"
-                className=" text-white font-medium hover:text-violet-500 transition-all"
+                
+                className=" text-white font-medium hover:text-violet-500 transition-all cursor-pointer"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               >
                 {" "}
                 {/* font-medium text-white transition-all hover:bg-gradient-to-r hover:from-purple-900 hover:to-pink-400 hover:bg-clip-text hover:text-transparent*/}
                 HOME
               </a>
 
-              <a
-                href="#"
-                className="text-white font-medium hover:text-violet-500 transition-all"
+              <div
+                className="flex items-center gap-2 whitespace-nowrap cursor-pointer text-white font-medium hover:text-violet-500 transition-all"
+                onClick={() => {
+                  const element = document.getElementById("features");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 ABOUT
-              </a>
+              </div>
+
               {/* <a
                 href="#"
                 className="text-white font-medium hover:text-violet-500 transition-all"
               >
                 SERVICE
               </a> */}
-              <a
-                href="#"
-                className="text-white font-medium hover:text-violet-500 transition-all"
+              <div
+                className="flex items-center gap-2 whitespace-nowrap cursor-pointer text-white font-medium hover:text-violet-500 transition-all"
+                onClick={() => {
+                  const element = document.getElementById("features2");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 CONTACT
-              </a>
+              </div>
 
               {/* Authentication / Profile */}
               {!user?.user?.email ? (
@@ -109,7 +124,7 @@ export default function Home() {
             </a>
           </div> */}
 
-          <div className="mt-5 max-w-2xl text-center mx-auto">
+          <div className="mt-5 max-w-2xl text-center mx-auto cursor-default select-none">
             <h1 className="block font-bold text-white text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
               Design it. Build it
               <span className="bg-clip-text bg-gradient-to-tl from-violet-900 to-violet-500 text-transparent">
@@ -119,14 +134,14 @@ export default function Home() {
             </h1>
           </div>
 
-          <div className="mt-5 max-w-3xl text-center mx-auto">
+          <div className="mt-5 max-w-3xl text-center mx-auto cursor-default select-none">
             <p className="text-lg text-gray-400 dark:text-neutral-400">
               Revolutionize your content creation with our AI-powered app,
-              delivering engaging and high-quality codes in seconds.
+              delivering engaging and high quality codes in seconds.
             </p>
           </div>
 
-          <div className="mt-8 gap-3 flex justify-center">
+          <div className="mt-8 gap-3 flex justify-center select-none">
             {user?.user?.email ? (
               <a href="/dashboard">
                 <MagicButton
@@ -173,8 +188,11 @@ export default function Home() {
           className="w-full max-w-[800px] h-auto mt-[-30px] object-contain rounded-lg shadow-lg"
         />
       </div>
+      <div className="mt-10 text-center">
+        <h2 className="text-4xl font-bold text-white">ABOUT</h2>
+      </div>
 
-      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto cursor-default">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-2">
           <a
             className="group flex flex-col justify-center rounded-xl p-4 md:p-7 transition-all duration-200 
@@ -200,7 +218,7 @@ export default function Home() {
                 <path d="m9 18 3-3-3-3" />
               </svg>
             </div>
-            <div className="mt-5">
+            <div id="features" className="mt-5">
               <h3 className="group-hover:text-gray-100 text-lg font-semibold text-gray-400 dark:text-white dark:group-hover:text-gray-400">
                 Effortless Conversion
               </h3>
@@ -314,6 +332,9 @@ export default function Home() {
             </div>
           </a>
         </div>
+      </div>
+      <div id="features2">
+      <Contact />
       </div>
     </div>
   );
