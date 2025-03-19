@@ -16,7 +16,9 @@ export default function Home() {
   const user = useAuthContext();
   console.log(user?.user)
   return (
+    
     <div className="min-h-screen bg-[#050816] bg-[url('/herobg.png')] bg-contain bg-top bg-no-repeat">
+      <section id="home"></section>
       <header className="fixed top-0 left-0 z-50 w-full bg-transparent backdrop-blur-md border-b border-white/20 text-sm py-3 sm:py-3">
         <nav
           className="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { FaXTwitter, FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa6"; // Updated Twitter icon to X
+import { Link as ScrollLink } from "react-scroll";
 
 const Footer: React.FC = () => {
   return (
@@ -15,30 +16,41 @@ const Footer: React.FC = () => {
         {/* Navigation Links */}
         <nav className="flex space-x-8 mt-4 md:mt-0 text-lg">
           {/* <Link href="/" className="text-gray-400 hover:text-violet-500 transition-all">Get Started</Link> */}
-          <Link
-            href="/"
-            className="text-gray-400 hover:text-violet-500 transition-all"
+          <ScrollLink
+            to="home"
+            smooth={true}
+            duration={500}
+            offset={0} // Ensures it goes exactly to the top
+            className="text-gray-400 hover:text-violet-500 transition-all cursor-pointer"
           >
             Home
-          </Link>
-          <Link
-            href="/#about"
-            className="text-gray-400 hover:text-violet-500 transition-all"
+          </ScrollLink>
+          <ScrollLink
+            to="features"
+            smooth={true}
+            duration={500}
+            offset={-50} // Adjust for fixed headers
+            className="text-gray-400 hover:text-violet-500 transition-all cursor-pointer"
           >
             About
-          </Link>
-          <Link
-            href="/#contact"
-            className="text-gray-400 hover:text-violet-500 transition-all"
+          </ScrollLink>
+          <ScrollLink
+            to="features2"
+            smooth={true}
+            duration={500}
+            offset={-50} // Adjust for fixed headers
+            className="text-gray-400 hover:text-violet-500 transition-all cursor-pointer"
           >
             Contact
-          </Link>
+          </ScrollLink>
         </nav>
 
         {/* Social Media Icons */}
         <div className="flex space-x-5 mt-4 md:mt-0">
           <a
-            href="https://github.com/atharva-aak/vision2web" target="_blank" rel="noopener noreferrer"
+            href="https://github.com/atharva-aak/vision2web"
+            target="_blank"
+            rel="noopener noreferrer"
             className="p-3 rounded-full bg-gray-800 transition-all duration-300 hover:bg-transparent"
           >
             <FaGithub
@@ -48,7 +60,9 @@ const Footer: React.FC = () => {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/atharva-kalbande38/" target="_blank" rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/atharva-kalbande38/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="p-3 rounded-full bg-gray-800 transition-all duration-300 hover:bg-transparent"
           >
             <FaLinkedinIn
@@ -57,7 +71,9 @@ const Footer: React.FC = () => {
             />
           </a>
           <a
-            href="https://x.com/_atharva_ak_" target="_blank" rel="noopener noreferrer"
+            href="https://x.com/_atharva_ak_"
+            target="_blank"
+            rel="noopener noreferrer"
             className="p-3 rounded-full bg-gray-800 transition-all duration-300 hover:bg-transparent"
           >
             <FaXTwitter
@@ -66,7 +82,9 @@ const Footer: React.FC = () => {
             />
           </a>
           <a
-            href="https://www.instagram.com/_atharva.kalbande_/?hl=en" target="_blank" rel="noopener noreferrer"
+            href="https://www.instagram.com/_atharva.kalbande_/?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
             className="p-3 rounded-full bg-gray-800 transition-all duration-300 hover:bg-transparent"
           >
             <FaInstagram
