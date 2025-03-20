@@ -89,7 +89,7 @@ function ImageUpload() {
                     <p className='text-gray-400 mt-2'>Click Button Select Wireframe Image </p>
                     <div className='p-5 border border-dashed w-full flex mt-4 justify-center'>
                         <label htmlFor='imageSelect'>
-                            <h2 className='p-2 bg-blue-100 font-bold text-primary  rounded-md px-5'>Select Image</h2>
+                            <h2 className='p-2 bg-blue-100 font-bold text-primary  rounded-md px-5 cursor-pointer'>Select Image</h2>
                         </label>
 
                     </div>
@@ -119,8 +119,8 @@ function ImageUpload() {
                         </SelectTrigger>
                         <SelectContent>
                             {Constants?.AiModelList.map((model, index) => (
-                                <SelectItem value={model.name} key={index} >
-                                    <div className='flex items-center gap-2 cursor-pointer'>
+                                <SelectItem value={model.name} key={index} className='cursor-pointer' >
+                                    <div className='flex items-center gap-2'>
                                         <Image src={model.icon} alt={model.name} width={25} height={25} />
                                         <h2> {model.name}</h2>
                                     </div>
