@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
         const result: any = await db.insert(usersTable).values({
             name: userName,
             email: userEmail,
-            credits: 3,
+            credits: 5,
             // @ts-ignore
         }).returning(usersTable);
 
