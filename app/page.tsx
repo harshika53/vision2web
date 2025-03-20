@@ -10,6 +10,8 @@ import MagicButton from "./MagicButton";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const user = useAuthContext();
@@ -21,8 +23,27 @@ export default function Home() {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+  const router = useRouter();
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleNavigation = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      router.push("/dashboard");
+    }, 500); // Delay navigation to allow the transition effect
+  };
 
   return (
+    <>
+                {isTransitioning && (
+                    <motion.div
+                        className="fixed inset-0 bg-[#050816] z-50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                    />
+                )}
     <div className="min-h-screen bg-[#050816] bg-[url('/herobg.png')] bg-contain bg-top bg-no-repeat">
       <section id="home"></section>
       <header className="fixed top-0 left-0 z-50 w-full bg-transparent backdrop-blur-md border-b border-white/20 text-sm py-3 sm:py-3">
@@ -180,38 +201,31 @@ export default function Home() {
           </div>
 
           <div className="mt-8 gap-3 flex justify-center select-none">
-            {user?.user?.email ? (
-              <a href="/dashboard">
-                <MagicButton
-                  title="Get Started"
-                  position="right"
-                  icon={undefined}
-                />
-                <svg
-                  className="flex-shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </a>
-            ) : (
-              <Authentication>
-                <MagicButton
-                  title="Get Started"
-                  position="right"
-                  icon={undefined}
-                />
-              </Authentication>
-            )}
-          </div>
+        {user?.user?.email ? (
+          <div onClick={handleNavigation} className="flex items-center cursor-pointer">
+          <MagicButton title="Get Started" position="right" icon={undefined} />
+          <svg
+            className="flex-shrink-0 size-4"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </div>
+        
+        ) : (
+          <Authentication>
+            <MagicButton title="Get Started" position="right" icon={undefined} />
+          </Authentication>
+        )}
+      </div>
         </div>
       </div>
 
@@ -376,5 +390,6 @@ export default function Home() {
       <Footer />
       </div>
     </div>
+    </>
   );
 }

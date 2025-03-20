@@ -1,19 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Sidebar,
     SidebarContent,
     SidebarFooter,
     SidebarGroup,
     SidebarGroupContent,
-    SidebarGroupLabel,
     SidebarHeader,
     SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { Calendar, CircleDollarSign, Home, Inbox, Paintbrush, Search, Settings } from "lucide-react"
+import { CircleDollarSign, Home, Paintbrush } from "lucide-react"
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { motion } from 'framer-motion'
 
 const items = [
     {
@@ -31,47 +29,69 @@ const items = [
         url: "/credits",
         icon: CircleDollarSign,
     },
-
 ]
 
 export function AppSidebar() {
     const path = usePathname();
-    console.log(path)
+    const router = useRouter();
+    const [isTransitioning, setIsTransitioning] = useState(false);
+
+    const handleNavigation = (href: string) => {
+        setIsTransitioning(true);
+        setTimeout(() => {
+            router.push(href);
+        }, 500); // Delays navigation for animation
+    };
+
     return (
-        <Sidebar>
-            <SidebarHeader>
-                <div className='p-4'>
-                    <div className='flex items-center gap-2'>
-                        <Image src={'/logo_h1.png'} alt='logo' width={100} height={100}
-                            className='w-[50px] h-[34px]' />
-                        <h2 className='font-bold text-lg'>Vison To Web</h2>
+        <>
+            {isTransitioning && (
+                <motion.div
+                    className="fixed inset-0 bg-[#050816] z-50"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                />
+            )}
+
+            <Sidebar className="!bg-[#050816] min-h-screen text-white">
+                <SidebarHeader className="!bg-[#050816]">
+                    <div className='p-4'>
+                        <button onClick={() => handleNavigation('/')} className="cursor-pointer">
+                            <div className='flex items-center gap-2'>
+                                <Image src={'/logo_h.png'} alt='logo' width={100} height={100}
+                                    className='w-[50px] h-[34px]' />
+                                <h2 className='font-bold text-lg text-white'>Vison To Web</h2>
+                            </div>
+                            <h2 className='text-sm text-gray-400 text-center'>Build Awesome</h2>
+                        </button>
                     </div>
-                    <h2 className='text-sm text-gray-400 text-center'>Build Awesome</h2>
-                </div>
-            </SidebarHeader>
-            <SidebarContent>
-                <SidebarGroup>
+                </SidebarHeader>
 
-                    <SidebarGroupContent>
-                        <SidebarMenu className='mt-5'>
-                            {items.map((item, index) => (
-                                <a href={item.url} key={index}
-                                    className={`p-2 text-lg flex gap-2 items-center
-                                 hover:bg-gray-100 rounded-lg
-                                 ${path == item.url && 'bg-gray-200'}
-                                 `}>
-                                    <item.icon className='h-5 w-5' />
-                                    <span>{item.title}</span>
-                                </a>
+                <SidebarContent className="!bg-[#050816]">
+                    <SidebarGroup>
+                        <SidebarGroupContent>
+                            <SidebarMenu className='mt-5'>
+                                {items.map((item, index) => (
+                                    <a href={item.url} key={index}
+                                        className={`p-2 text-lg flex gap-2 items-center text-white
+                                        hover:bg-gray-700 rounded-lg
+                                        ${path === item.url ? 'bg-gray-600' : ''}
+                                        `}>
+                                        <item.icon className='h-5 w-5' />
+                                        <span>{item.title}</span>
+                                    </a>
+                                ))}
+                            </SidebarMenu>
+                        </SidebarGroupContent>
+                    </SidebarGroup>
+                </SidebarContent>
 
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroupContent>
-                </SidebarGroup>
-            </SidebarContent>
-            <SidebarFooter>
-                <h2 className='p-2 text-gray-400 text-sm'>Group 13 CYSE</h2>
-            </SidebarFooter>
-        </Sidebar>
+                <SidebarFooter className="!bg-[#050816]">
+                    <h2 className='p-2 text-gray-400 text-sm'>vision2web.vercel.app</h2>
+                </SidebarFooter>
+            </Sidebar>
+        </>
     )
 }

@@ -120,7 +120,7 @@ function ImageUpload() {
                         <SelectContent>
                             {Constants?.AiModelList.map((model, index) => (
                                 <SelectItem value={model.name} key={index} >
-                                    <div className='flex items-center gap-2'>
+                                    <div className='flex items-center gap-2 cursor-pointer'>
                                         <Image src={model.icon} alt={model.name} width={25} height={25} />
                                         <h2> {model.name}</h2>
                                     </div>
