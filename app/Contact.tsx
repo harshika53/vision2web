@@ -38,7 +38,7 @@ const Contact = () => {
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
       console.error(error);
-      alert("Ahh, something went wrong. Please try again.");
+      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }

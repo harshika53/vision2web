@@ -9,14 +9,20 @@ import { useAuthContext } from "./provider";
 import MagicButton from "./MagicButton";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import { useState } from "react";
 
 export default function Home() {
-  // const user = auth?.currentUser;
-  // console.log(user)
   const user = useAuthContext();
-  console.log(user?.user)
+  console.log(user?.user);
+  // Add state to control mobile menu
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Toggle mobile menu function
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
-    
     <div className="min-h-screen bg-[#050816] bg-[url('/herobg.png')] bg-contain bg-top bg-no-repeat">
       <section id="home"></section>
       <header className="fixed top-0 left-0 z-50 w-full bg-transparent backdrop-blur-md border-b border-white/20 text-sm py-3 sm:py-3">
@@ -39,51 +45,80 @@ export default function Home() {
               />
               <h2 className="font-bold text-lg text-white">Vision To Web</h2>
             </div>
+
+            {/* Mobile menu button */}
+            <div className="sm:hidden">
+              <button
+                type="button"
+                className="p-2 text-white hover:text-violet-500 focus:outline-none"
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                onClick={toggleMobileMenu}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  {mobileMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
 
           {/* Navigation Links */}
           <div
-            id="navbar-collapse-with-animation"
-            className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
+            className={`${
+              mobileMenuOpen ? "block" : "hidden"
+            } transition-all duration-300 basis-full grow sm:block mt-4 sm:mt-0`}
           >
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end sm:ps-7 gap-6">
-              
               {/* Navigation Items */}
-              
               <a
-                
-                className=" text-white font-medium hover:text-violet-500 transition-all cursor-pointer"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="text-white font-medium hover:text-violet-500 transition-all cursor-pointer py-2 sm:py-0"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setMobileMenuOpen(false);
+                }}
               >
-                {" "}
-                {/* font-medium text-white transition-all hover:bg-gradient-to-r hover:from-purple-900 hover:to-pink-400 hover:bg-clip-text hover:text-transparent*/}
                 HOME
               </a>
 
               <div
-                className="flex items-center gap-2 whitespace-nowrap cursor-pointer text-white font-medium hover:text-violet-500 transition-all"
+                className="flex items-center gap-2 whitespace-nowrap cursor-pointer text-white font-medium hover:text-violet-500 transition-all py-2 sm:py-0"
                 onClick={() => {
                   const element = document.getElementById("features");
                   if (element) {
                     element.scrollIntoView({ behavior: "smooth" });
+                    setMobileMenuOpen(false);
                   }
                 }}
               >
                 ABOUT
               </div>
 
-              {/* <a
-                href="#"
-                className="text-white font-medium hover:text-violet-500 transition-all"
-              >
-                SERVICE
-              </a> */}
               <div
-                className="flex items-center gap-2 whitespace-nowrap cursor-pointer text-white font-medium hover:text-violet-500 transition-all"
+                className="flex items-center gap-2 whitespace-nowrap cursor-pointer text-white font-medium hover:text-violet-500 transition-all py-2 sm:py-0"
                 onClick={() => {
                   const element = document.getElementById("features2");
                   if (element) {
                     element.scrollIntoView({ behavior: "smooth" });
+                    setMobileMenuOpen(false);
                   }
                 }}
               >
@@ -93,7 +128,7 @@ export default function Home() {
               {/* Authentication / Profile */}
               {!user?.user?.email ? (
                 <Authentication>
-                  <div className="flex items-center gap-x-2  text-white font-medium hover:text-violet-500 transition-all sm:border-l sm:border-white/30 py-2 sm:py-0 sm:ml-4 sm:pl-6 cursor-pointer ">
+                  <div className="flex items-center gap-x-2 text-white font-medium hover:text-violet-500 transition-all sm:border-l sm:border-white/30 py-2 sm:py-0 sm:ml-4 sm:pl-6 cursor-pointer">
                     <svg
                       className="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
