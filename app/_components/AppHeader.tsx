@@ -8,8 +8,8 @@ function AppHeader({ hideSidebar = false }) {
         <div className='p-4 shadow-sm flex items-center justify-between w-full '>
             {!hideSidebar ? <SidebarTrigger /> :
                 <div className='flex items-center gap-2'>
-                    <Image src={'/logo.svg'} alt='logo' width={100} height={100}
-                        className='w-[40px] h-[40px]' />
+                    <Image src={'/logo_h1.png'} alt='logo' width={100} height={100}
+                        className='w-[50px] h-[34px]' />
                     <h2 className='font-bold text-lg'>Wireframe to Code</h2>
                 </div>
             }
