@@ -35,14 +35,22 @@ function DashboardProvider({
     return (
         <SidebarProvider>
             <AppSidebar />
-            <main className='w-full'>
+            <main
+                className="w-full min-h-screen"
+                style={{
+                    backgroundImage: "url('/herobg.png')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
                 <AppHeader />
                 {/* <SidebarTrigger /> */}
-                <div className='p-10'>{children}</div>
+                <div className="p-10">{children}</div>
             </main>
         </SidebarProvider>
-
-    )
+    );
+    
 }
 
 export default DashboardProvider

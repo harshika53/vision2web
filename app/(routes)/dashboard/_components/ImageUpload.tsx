@@ -16,11 +16,11 @@ import {
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { storage } from '@/configs/firebaseConfig'
 import axios from 'axios'
-import { uuid } from 'drizzle-orm/pg-core'
 import { useAuthContext } from '@/app/provider'
 import { useRouter } from 'next/navigation'
 import Constants from '@/data/Constants'
 import { toast } from 'sonner'
+
 function ImageUpload() {
 
     const [previewUrl, setPreviewUrl] = useState<string | null>(null)
@@ -43,11 +43,11 @@ function ImageUpload() {
 
     const OnConverToCodeButtonClick = async () => {
         if (!file || !model || !description) {
-            console.log("Select All Field");
+            console.log("Select All Fields");
             return;
         }
         setLoading(true);
-        //Save Image to Firebase
+        // Save Image to Firebase
         const fileName = Date.now() + '.png';
         const imageRef = ref(storage, "Wireframe_To_Code/" + fileName);
         await uploadBytes(imageRef, file).then(resp => {
@@ -78,75 +78,119 @@ function ImageUpload() {
     }
 
     return (
-        <div className='mt-10'>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
-                {!previewUrl ? <div className='p-7 border border-dashed rounded-md shadow-md
-                flex flex-col items-center justify-center
-                '>
-                    <CloudUpload className='h-10 w-10 text-primary' />
-                    <h2 className='font-bold text-lg'>Upload Image</h2>
+      <div className="mt-6 overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {!previewUrl ? (
+            <div
+              className="p-7 border rounded-md shadow-md flex flex-col items-center justify-center 
+                        bg-cover bg-center relative mt-5" // Added mt-5 for slight downward shift
+              style={{ backgroundImage: "url('/herobg.png')" }}
+            >
+              {/* Dark Overlay for Better Visibility */}
+              <div className="absolute inset-0 bg-black opacity-40"></div>
 
-                    <p className='text-gray-400 mt-2'>Click Button Select Wireframe Image </p>
-                    <div className='p-5 border border-dashed w-full flex mt-4 justify-center'>
-                        <label htmlFor='imageSelect'>
-                            <h2 className='p-2 bg-blue-100 font-bold text-primary  rounded-md px-5 cursor-pointer'>Select Image</h2>
-                        </label>
-
-                    </div>
-                    <input type="file" id='imageSelect'
-                        className='hidden'
-                        multiple={false}
-                        onChange={OnImageSelect}
-                    />
-
-                </div> :
-                    <div className='p-5 border border-dashed'>
-                        <Image src={previewUrl} alt='preview' width={500} height={500}
-                            className='w-full h-[250px] object-contain'
-                        />
-                        <X className='flex ite justify-end w-full cursor-pointer'
-                            onClick={() => setPreviewUrl(null)}
-                        />
-
-                    </div>
-                }
-                <div className='p-7 border shadow-md rounded-lg'>
-
-                    <h2 className='font-bold text-lg'>Select AI Model</h2>
-                    <Select onValueChange={(value) => setModel(value)}>
-                        <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Select AI Model" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            {Constants?.AiModelList.map((model, index) => (
-                                <SelectItem value={model.name} key={index} className='cursor-pointer' >
-                                    <div className='flex items-center gap-2'>
-                                        <Image src={model.icon} alt={model.name} width={25} height={25} />
-                                        <h2> {model.name}</h2>
-                                    </div>
-
-                                </SelectItem>
-
-                            ))}
-
-                        </SelectContent>
-                    </Select>
-
-                    <h2 className='font-bold text-lg mt-7'>Enter Description about your webpage</h2>
-                    <Textarea
-                        onChange={(event) => setDescription(event?.target.value)}
-                        className='mt-3 h-[150px]'
-                        placeholder='Write about your web page' />
+              <div className="relative flex flex-col items-center">
+                <CloudUpload className="h-10 w-10 text-white" />
+                <h2 className="font-bold text-lg text-white mt-2">
+                  Upload Image
+                </h2>
+                <p className="text-gray-300 mt-2">
+                  Click Button Select Wireframe Image
+                </p>
+                <div className="p-5 w-full flex mt-4 justify-center">
+                  <label htmlFor="imageSelect">
+                    <h2 className="p-2 bg-blue-100 font-bold text-primary rounded-md px-5 cursor-pointer">
+                      Select Image
+                    </h2>
+                  </label>
                 </div>
+                <input
+                  type="file"
+                  id="imageSelect"
+                  className="hidden"
+                  multiple={false}
+                  onChange={OnImageSelect}
+                />
+              </div>
             </div>
+          ) : (
+            <div className="p-5 border border-dashed mt-5">
+              <Image
+                src={previewUrl}
+                alt="preview"
+                width={500}
+                height={500}
+                className="w-full h-[250px] object-contain"
+              />
+              <X
+                className="flex ite justify-end w-full cursor-pointer text-white"
+                onClick={() => setPreviewUrl(null)}
+              />
+            </div>
+          )}
 
-            <div className='mt-10 flex items-center justify-center'>
-                <Button onClick={OnConverToCodeButtonClick} disabled={loading}>
-                    {loading ? <Loader2Icon className=' animate-spin' /> : <WandSparkles />}
-                    Convert to Code</Button>
-            </div>
+          <div
+            className="p-7 border rounded-md shadow-md flex flex-col
+                        bg-cover bg-center relative overflow-hidden mt-5" // Added mt-5 for slight downward shift
+            style={{ backgroundImage: "url('/herobg.png')" }}
+          >
+            {/* Dark Overlay for Better Visibility */}
+            <div className="absolute inset-0 bg-black opacity-40"></div>
+            <div className="relative flex flex-col">
+            <h2 className="font-bold text-lg text-white mb-2">Select AI Model</h2>
+            <Select onValueChange={(value) => setModel(value)}>
+              <SelectTrigger className="w-full text-white">
+                <SelectValue placeholder="Select AI Model" />
+              </SelectTrigger>
+              <SelectContent>
+                {Constants?.AiModelList.map((model, index) => (
+                  <SelectItem
+                    value={model.name}
+                    key={index}
+                    className="cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Image
+                        src={model.icon}
+                        alt={model.name}
+                        width={25}
+                        height={25}
+                      />
+                      <h2> {model.name}</h2>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <h2 className="font-bold text-lg mt-7 text-white">
+              Enter Description about your webpage
+            </h2>
+            <Textarea
+              onChange={(event) => setDescription(event?.target.value)}
+              className="mt-3 h-[150px]"
+              placeholder="Write about your web page"
+            />
+          </div>
+          </div>
         </div>
-    )
+        
+
+        <div className="mt-14 flex items-center justify-center">
+          {" "}
+          {/* Increased spacing */}
+          <Button onClick={OnConverToCodeButtonClick} disabled={loading}>
+            {loading ? (
+              <Loader2Icon className=" animate-spin" />
+            ) : (
+              <WandSparkles />
+            )}
+            Convert to Code
+          </Button>
+        </div>
+      </div>
+    );
+    
 }
 
 export default ImageUpload

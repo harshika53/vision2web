@@ -55,8 +55,9 @@ export function AppSidebar() {
                 />
             )}
 
-            <Sidebar className="!bg-[#050816] min-h-screen text-white">
-                <SidebarHeader className="!bg-[#050816]">
+            {/* Sidebar with Fixed Border Color */}
+            <Sidebar className="!bg-[#050816] min-h-screen text-white !border-[#050816]">
+                <SidebarHeader className="!bg-[#050816] !border-[#050816]">
                     <div className='p-4'>
                         <button onClick={() => handleNavigation('/')} className="cursor-pointer">
                             <div className='flex items-center gap-2'>
@@ -69,7 +70,7 @@ export function AppSidebar() {
                     </div>
                 </SidebarHeader>
 
-                <SidebarContent className="!bg-[#050816]">
+                <SidebarContent className="!bg-[#050816] !border-[#050816]">
                     <SidebarGroup>
                         <SidebarGroupContent>
                             <SidebarMenu className='mt-5'>
@@ -88,7 +89,7 @@ export function AppSidebar() {
                     </SidebarGroup>
                 </SidebarContent>
 
-                <SidebarFooter className="!bg-[#050816]">
+                <SidebarFooter className="!bg-[#050816] !border-[#050816]">
                     <h2 className='p-2 text-gray-400 text-sm'>vision2web.vercel.app</h2>
                 </SidebarFooter>
             </Sidebar>
