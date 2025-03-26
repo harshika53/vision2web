@@ -168,13 +168,12 @@ function ImageUpload() {
             </h2>
             <Textarea
               onChange={(event) => setDescription(event?.target.value)}
-              className="mt-3 h-[150px]"
-              placeholder="Write about your web page"
+              className="mt-3 h-[150px] text-white"
+              placeholder="Write about your web page !"
             />
           </div>
           </div>
         </div>
-        
 
         <div className="mt-14 flex items-center justify-center">
           {" "}
