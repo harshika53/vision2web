@@ -82,12 +82,12 @@ function ImageUpload() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {!previewUrl ? (
             <div
-              className="p-7 border rounded-md shadow-md flex flex-col items-center justify-center 
+              className="p-7 border border-[#5b3bb2] rounded-md shadow-md flex flex-col items-center justify-center 
                         bg-cover bg-center relative mt-5" // Added mt-5 for slight downward shift
               style={{ backgroundImage: "url('/herobg.png')" }}
             >
               {/* Dark Overlay for Better Visibility */}
-              <div className="absolute inset-0 bg-black opacity-40"></div>
+              <div className="absolute inset-0.5 bg-black opacity-40"></div>
 
               <div className="relative flex flex-col items-center">
                 <CloudUpload className="h-10 w-10 text-white" />
@@ -99,7 +99,7 @@ function ImageUpload() {
                 </p>
                 <div className="p-5 w-full flex mt-4 justify-center">
                   <label htmlFor="imageSelect">
-                    <h2 className="p-2 bg-blue-100 font-bold text-primary rounded-md px-5 cursor-pointer">
+                    <h2 className="p-2 bg-blue-100 font-bold rounded-md px-5 cursor-pointer hover:bg-[#714dd5] hover:text-white transition duration-300">
                       Select Image
                     </h2>
                   </label>
@@ -130,55 +130,65 @@ function ImageUpload() {
           )}
 
           <div
-            className="p-7 border rounded-md shadow-md flex flex-col
+            className="p-7 border border-[#5b3bb2] rounded-md shadow-md flex flex-col
                         bg-cover bg-center relative overflow-hidden mt-5" // Added mt-5 for slight downward shift
             style={{ backgroundImage: "url('/herobg.png')" }}
           >
             {/* Dark Overlay for Better Visibility */}
-            <div className="absolute inset-0 bg-black opacity-40"></div>
+            <div className="absolute inset-0.5 bg-black opacity-40"></div>
             <div className="relative flex flex-col">
-            <h2 className="font-bold text-lg text-white mb-2">Select AI Model</h2>
-            <Select onValueChange={(value) => setModel(value)}>
-              <SelectTrigger className="w-full text-white">
-                <SelectValue placeholder="Select AI Model" />
-              </SelectTrigger>
-              <SelectContent>
-                {Constants?.AiModelList.map((model, index) => (
-                  <SelectItem
-                    value={model.name}
-                    key={index}
-                    className="cursor-pointer"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Image
-                        src={model.icon}
-                        alt={model.name}
-                        width={25}
-                        height={25}
-                      />
-                      <h2> {model.name}</h2>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              <h2 className="font-bold text-lg text-white mb-2">
+                Select AI Model
+              </h2>
+              <Select onValueChange={(value) => setModel(value)}>
+                <SelectTrigger className="w-full border border-[#5b3bb2] text-white">
+                  <SelectValue
+                    placeholder="Select AI Model"
+                    className="!text-white"
+                  />
+                </SelectTrigger>
+                <SelectContent className="bg-[#050816] border-none text-white">
+                  {Constants?.AiModelList.map((model, index) => (
+                    <SelectItem
+                      value={model.name}
+                      key={index}
+                      className="cursor-pointer !bg-[#050816] !text-white hover:!bg-[#4921b1] hover:!text-white transition duration-300 data-[state=checked]:!text-white data-[state=checked]:!font-bold"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Image
+                          src={model.icon}
+                          alt={model.name}
+                          width={25}
+                          height={25}
+                        />
+                        <h2 className="!text-white"> {model.name} </h2>{" "}
+                        {/* Force white text */}
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
-            <h2 className="font-bold text-lg mt-7 text-white">
-              Enter Description about your webpage
-            </h2>
-            <Textarea
-              onChange={(event) => setDescription(event?.target.value)}
-              className="mt-3 h-[150px] text-white"
-              placeholder="Write about your web page !"
-            />
-          </div>
+              <h2 className="font-bold text-lg mt-7 text-white">
+                Enter Description about your webpage
+              </h2>
+              <Textarea
+                onChange={(event) => setDescription(event?.target.value)}
+                className="mt-3 h-[150px] border border-[#5b3bb2] text-white"
+                placeholder="Write about your web page !"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="mt-14 flex items-center justify-center">
+        <div className="mt-14 flex items-center justify-center ">
           {" "}
           {/* Increased spacing */}
-          <Button onClick={OnConverToCodeButtonClick} disabled={loading}>
+          <Button
+            onClick={OnConverToCodeButtonClick}
+            disabled={loading}
+            className="bg-[#5b3bb2] hover:bg-[#4e2cad]"
+          >
             {loading ? (
               <Loader2Icon className=" animate-spin" />
             ) : (

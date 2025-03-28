@@ -109,8 +109,18 @@ function ViewCode() {
 
 
     return (
-        <div>
+        <div className=''>
+             <main
+                className="w-full h-screen"
+                style={{
+                    backgroundImage: "url('/herobg.png')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
             <AppHeader hideSidebar={true} />
+           
             <div className='grid grid-cols-1 md:grid-cols-5 p-5 gap-10'>
                 <div>
                     {/* Selection Details  */}
@@ -122,7 +132,7 @@ function ViewCode() {
                     {/* Code Editor  */}
                     {loading ? <div>
                         <h2 className='font-bold text-2xl text-center p-20 flex items-center justify-center
-                        bg-slate-100 h-[80vh] rounded-xl
+                        bg-[#452c88] h-[80vh] rounded-xl text-white
                         '> <Loader2 className='animate-spin' /> Anaylzing the Wireframe...</h2>
                     </div> :
                         <CodeEditor codeResp={codeResp} isReady={isReady}
@@ -132,9 +142,10 @@ function ViewCode() {
             </div>
 
 
-
+            </main>
 
         </div>
+        
     )
 }
 
