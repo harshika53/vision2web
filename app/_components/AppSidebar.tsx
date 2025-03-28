@@ -20,7 +20,7 @@ const items = [
         icon: Home,
     },
     {
-        title: "Design",
+        title: "History",
         url: "/designs",
         icon: Paintbrush,
     },
