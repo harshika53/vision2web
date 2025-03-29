@@ -132,7 +132,7 @@ function ViewCode() {
                     {/* Code Editor  */}
                     {loading ? <div>
                         <h2 className='font-bold text-2xl text-center p-20 flex items-center justify-center
-                        bg-[#452c88] h-[80vh] rounded-xl text-white
+                        bg-[#151515] h-[80vh] rounded-xl text-white
                         '> <Loader2 className='animate-spin' /> Anaylzing the Wireframe...</h2>
                     </div> :
                         <CodeEditor codeResp={codeResp} isReady={isReady}
