@@ -24,11 +24,11 @@ const items = [
         url: "/designs",
         icon: Paintbrush,
     },
-    {
-        title: "Credits",
-        url: "/credits",
-        icon: CircleDollarSign,
-    },
+    // {
+    //     title: "Credits",
+    //     url: "/credits",
+    //     icon: CircleDollarSign,
+    // },
 ]
 
 export function AppSidebar() {
