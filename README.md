@@ -1,4 +1,4 @@
-# Vision to Web 🌐✨
+# Vision to Web 🌐
 
 **Vision to Web** is an intelligent platform that converts UI wireframes into clean, production-ready HTML, CSS, and TypeScript (TSX) code using advanced AI models. It streamlines the UI/UX-to-code process, helping developers and designers bring their ideas to life instantly — no more manual front-end coding from scratch.
 
@@ -9,8 +9,6 @@
 - ⚡ **Real-Time Code Generation & Preview** – See code and live preview update instantly.
 - 💾 **Conversion History** – Access your previous conversions anytime.
 - 📸 **Demo** – See it in action: [Live Demo](https://vision2web.vercel.app)
-
-> Experience the future of UI development.
 
 ---
 
